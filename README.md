@@ -1,17 +1,17 @@
-# 📂 **filesystem-tree**
+# **filesystem-tree**
 
 Este projeto permite visualizar e explorar a estrutura de diretórios e arquivos de um sistema de arquivos como uma árvore interativa diretamente no terminal Linux. Ele carrega a estrutura a partir de um caminho especificado (ou da pasta atual) e oferece um menu interativo para navegar entre os diretórios e arquivos.
 
 ---
 
-## 🚀 **Como executar**
+## **Como executar**
 
-### 🔧 **Pré-requisitos**
+### **Pré-requisitos**
 
 - GNU/Linux
 - (Definir a linguagem de programação utilizada: Python, C, Java, etc.)
 
-### 🏃‍♂️ **Executando**
+### **Executando**
 
 Se estiver usando Python (exemplo):
 
@@ -21,7 +21,7 @@ exemplo de execução com e sem argumento
 
 
 ---
-## 📋 **Funcionalidades**
+## **Funcionalidades**
 
 1. **Carregamento da Árvore**
     - Carrega o sistema de arquivos como uma árvore em memória, refletindo a estrutura real dos diretórios e arquivos.
@@ -38,7 +38,7 @@ exemplo de execução com e sem argumento
 
 ---
 
-## 👥 **Equipe**
+## **Equipe**
 
 - **Brenda Braga de Lima**
 - **Fernanda Japur Ihjaz**
