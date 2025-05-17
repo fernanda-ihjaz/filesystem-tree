@@ -1,11 +1,52 @@
 #include <iostream>
 #include "functions.hpp" // Inclui as funções declaradas no arquivo functions.hpp
 
-int main() 
+int main(int argc, char* argv[]) 
 {
-    load_tree_into_memory(); // Carrega a árvore na memória
-    display_full_tree(); // Exibe a árvore completa
-    export_to_html(); // Exporta a árvore para HTML
+        path root_path = (argc >= 2) ? path(argv[1]) : current_path();
+
+        if (!exists(root_path) || !is_directory(root_path)) 
+        {
+            cerr << "Erro: caminho inválido.\n";
+            return 1;
+        }
     
-    search(); // Realiza uma busca na árvore
+        Node* root = load_tree_into_memory(root_path); // Carrega a árvore na memória
+        if (!root) 
+        {
+            cerr << "Erro ao carregar a árvore.\n";
+            return 1;
+        }
+
+        int option;
+        do {
+            cout << "\n=== MENU ===\n"
+                 << "1. Exibir árvore completa\n"
+                 << "2. Exportar para HTML\n"
+                 << "3. Pesquisar\n"
+                 << "0. Sair\n"
+                 << "Opção: ";
+            cin >> option;
+            cin.ignore(); // limpa o buffer de entrada
+    
+            switch (option) {
+                case 1:
+                    display_full_tree(root); // Exibe a árvore completa
+                    break;
+                case 2:
+                    export_to_html(root, "saida.html"); // Exporta a árvore para HTML
+                    cout << "Exportado para 'saida.html'\n";
+                    break;
+                case 3:
+                    search(root); // Realiza uma busca na árvore
+                    break;
+                case 0:
+                    cout << "Saindo...\n";
+                    break;
+                default:
+                    cout << "Opção inválida.\n";
+            }
+        } while (option != 0);
+
+    return 0;
 }
