@@ -70,16 +70,32 @@ void find_files_by_extension(Node* node, const string& ext, vector<string>& resu
     if (!node) return;
 
     string fullPath = currentPath + "/" + node -> name;
+
+    if (node -> is_file && node -> name.size() >= ext.size()){
+        if (node -> name.substr(node -> name.size() - ext.size()) == ext){
+            results.push_back(fullPath);
+        }
+    }
+
+    for (Node* filho : node -> filhos){
+        find_files_by_extension(filho, ext, results, fullPath);
+    }
 }
 
 //achar pastas vazias
 void find_empty_directories(Node* node, vector<string>& results, string currentPath){
     if (!node || node -> is_file) return;
 
-    string fullpath = currentPath + "/" + node -> name;
+    string fullPath = currentPath + "/" + node -> name;
 
     if (node -> filhos.empty()){
         results.push_back(fullPath);
+    }
+
+    for (Node* filho : node -> filhos){
+        if (!filho -> is_file){
+            find_empty_directories(filho, results, fullPath);
+        }
     }
 }
 
@@ -131,9 +147,13 @@ void search(Node* root) {
 
             }
             case 4:{
+                string ext;
+                cout << "Digite a extensao do arquivo (e.g., .txt): ";
+                cin >> ext;
 
             }
             case 5:{
+                cout << "\nPastas vazias: \n";
 
             }
             case 0: {
