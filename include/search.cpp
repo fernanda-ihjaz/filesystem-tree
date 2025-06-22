@@ -42,6 +42,47 @@ void find_files_larger_than(Node* node, long long N, vector<pair<string, long lo
     }
 }
 
+//encontrar pasta com mais arquivos
+void find_directory_with_most_files(Node* node, string currentPath, int& maxCount, string& maxPath){
+    if (!node || node -> is_file) return;
+
+    string fullPath = currentPath + "/" + node -> name;
+    int count = 0;
+
+    for (Node* filho : node -> filhos){
+        if (filho -> is_file) count++;
+    }
+
+    if (count > maxCount) {
+        maxCount - count;
+        maxPath = fullPath;
+    }
+
+    for(Node* filho : node -> filhos){
+        if (!filho -> is_file){
+            find_directory_with_most_files(filho, fullPath, maxCount, maxPath);
+        }
+    }
+}
+
+//achar arquivos pela extensão
+void find_files_by_extension(Node* node, const string& ext, vector<string>& results, string currentPath){
+    if (!node) return;
+
+    string fullPath = currentPath + "/" + node -> name;
+}
+
+//achar pastas vazias
+void find_empty_directories(Node* node, vector<string>& results, string currentPath){
+    if (!node || node -> is_file) return;
+
+    string fullpath = currentPath + "/" + node -> name;
+
+    if (node -> filhos.empty()){
+        results.push_back(fullPath);
+    }
+}
+
 // Menu de busca
 void search(Node* root) {
     int searchOption;
@@ -78,6 +119,25 @@ void search(Node* root) {
                 for (const auto& [path, size] : results) {
                     cout << path << " (" << size << " bytes)\n";
                 }
+                break;
+            }
+            case 3: {
+                int maxCount = 0;
+                string maxPath;
+                find_directory_with_most_files(root, ".", maxCount, maxPath);
+                cout << "\nPasta com mais arquivos: \n";
+                cout << maxPath << "(" << maxCount << " arquivos)\n";
+                break;
+
+            }
+            case 4:{
+
+            }
+            case 5:{
+
+            }
+            case 0: {
+                cout << "Retornando para o menu principal...\n";
                 break;
             }
         }
