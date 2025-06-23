@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// 3.1 - Buscar maior arquivo
+// Buscar maior arquivo
 void find_largest_file(Node* node, long long& largestSize, vector<string>& paths, string currentPath) {
     if (!node) return;
 
@@ -54,7 +54,7 @@ void find_directory_with_most_files(Node* node, string currentPath, int& maxCoun
     }
 
     if (count > maxCount) {
-        maxCount - count;
+        maxCount = count;
         maxPath = fullPath;
     }
 
@@ -150,15 +150,30 @@ void search(Node* root) {
                 string ext;
                 cout << "Digite a extensao do arquivo (e.g., .txt): ";
                 cin >> ext;
+                vector<string> results;
+                find_files_by_extension(root, ext, results, ".");
+                cout << "\nArquivos com a extensao " << ext << ":\n";
+                for (const string& path : results){
+                    cout << path << "\n";
+                }
+                break;
 
             }
             case 5:{
+                vector<string> results;
+                find_empty_directories(root, results, ".");
                 cout << "\nPastas vazias: \n";
-
+                for(const string& path : results){
+                    cout << path << "\n";
+                }
+                break;
             }
             case 0: {
                 cout << "Retornando para o menu principal...\n";
                 break;
+            }
+            default: {
+                cout << "Opcao Invalida.\n";
             }
         }
     } while (searchOption != 0);
