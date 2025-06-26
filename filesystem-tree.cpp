@@ -38,8 +38,8 @@ int main(int argc, char* argv[])
                 display_full_tree(root);
                 break;
             case 2:
-                // export_to_html(root, "saida.html");
-                // cout << "Exportado para 'saida.html'\n";
+                export_to_html(root, "saida.html");
+                cout << "Exportado para 'saida.html'\n";
                 break;
             case 3:
                 search(root);

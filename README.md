@@ -1,6 +1,6 @@
 # **filesystem-tree**
 
-Este projeto permite visualizar e explorar a estrutura de diretórios e arquivos de um sistema de arquivos como uma árvore interativa diretamente no terminal Linux. Ele carrega a estrutura a partir de um caminho especificado (ou da pasta atual) e oferece um menu interativo para navegar entre os diretórios e arquivos.
+Este projeto permite visualizar e explorar a estrutura de diretórios e arquivos de um sistema de arquivos como uma árvore interativa. Ele carrega a estrutura a partir de um caminho especificado (ou da pasta atual) e oferece um menu interativo para navegar entre os diretórios e arquivos.
 
 ---
 
@@ -13,7 +13,12 @@ Este projeto permite visualizar e explorar a estrutura de diretórios e arquivos
 
 ### **Executando**
 
-No terminal, execute:
+Na pasta raiz do repositório, execute:
+
+```bash
+g++ -std=c++17 filesystem-tree.cpp -o filesystem-tree.exe
+``` 
+Para compilar e gerar o executável do programa. Após isso:
 
 ```bash
 ./filesystem-tree
