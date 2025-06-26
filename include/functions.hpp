@@ -5,22 +5,11 @@
 #include <vector>
 #include <filesystem>
 
-
-#include "export_to_html.cpp"
-#include "search.cpp"
-#include "load_tree_into_memory.cpp"
-#include "display_full_tree.cpp"
-
 enum NodeTypes {
     root = 1,
     branch = 2,
     leaf = 3
 };
-
-int load_tree_into_memory();
-int display_full_tree();
-int export_to_html();
-int search(); // Funções de pesquisa
 
 struct Node {
     std::string name;
@@ -30,8 +19,14 @@ struct Node {
     NodeTypes type;
 };
 
-Node* load_tree_into_memory(const std::filesystem::path& path, bool is_root);
+#include "load_tree_into_memory.cpp"
+#include "display_full_tree.cpp"
+// #include "export_to_html.cpp"
+#include "search.cpp"
+
+Node* load_tree_into_memory(const fs::path& path, bool is_root);
 void display_full_tree(const Node* root);
-void search(Node* root)
+// int export_to_html(const Node *root, const std::string &filename);
+int search(); // Funções de pesquisa
 
 #endif
